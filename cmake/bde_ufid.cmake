@@ -609,6 +609,10 @@ function(bde_ufid_setup_flags iface)
     bde_interface_target_link_libraries(
         ${iface}
         PUBLIC
+            $<$<CXX_COMPILER_ID:Circle>:
+                rt
+                Threads::Threads
+            >
             $<$<CXX_COMPILER_ID:AppleClang>:
                 stdc++
                 Threads::Threads
